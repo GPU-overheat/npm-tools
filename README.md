@@ -1,15 +1,13 @@
 ## How to Use
 
-1. **Navigate to Your Project Directory**
-   Run the script from within the repository where you want to set up your Node.js server.
+1. **Running the script with no arguments.**
+   The script will init npm in the current repository. Which will make a dependencies package.json file only.
 
-2. **Setup**  
-   The script will:
-   - Create the necessary JSON files for your project.
-   - Install `express` and `nodemon` as dependencies.
-   - Generate an empty `server.js` file to get you started.
-   - Automatically add `"devStart": "nodemon server.js"` to package.json.
-3. **Start the Server**  
-   Use the following command to start the server in development mode:
-   ```bash
-   npm run devStart
+2. **Running the script with the argument `server`**  
+   - Create the necessary JSON files the server project.
+   - Install `express` , `nodemon` as dependencies.
+   - Generate an empty `server.js` file.
+   to start the server ```bash npm run devStart
+3. **Running the script with any package name as argument**  
+   - Create the necessary JSON files for the project.
+   - Install any packages provided [package1, package2,...]
