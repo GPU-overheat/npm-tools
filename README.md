@@ -7,7 +7,7 @@
    - Create the necessary JSON files the server project.
    - Install `express` , `nodemon` as dependencies.
    - Generate an empty `server.js` file.
-   to start the server ```bash npm run devStart
+   to start the server ```npm run devStart```
 3. **Running the script with any package name as argument**  
    - Create the necessary JSON files for the project.
    - Install any packages provided [package1, package2,...]
