@@ -1,3 +1,4 @@
+cat npmtools.sh
 #!/bin/bash
 
 set -e
@@ -38,13 +39,22 @@ if [ "$1" == "server" ]; then
         exit 1
     fi
 
+if [ ! -f server.js ] || [ ! -s server.js ]; then
     echo -e "${GREEN}Creating server.js file...${NC}"
     if ! touch server.js; then
         echo -e "${RED}Error: Failed to create server.js.${NC}"
         exit 1
     fi
-    echo 'const express = require("express");' >> server.js
-    echo "const app = express();" >> server.js
+
+    echo -e "${GREEN}Writing to server.js...${NC}"
+    echo 'const express = require("express");' > server.js
+    echo 'const app = express();' >> server.js
+    echo 'const port = 3000;' >> server.js
+    echo 'app.get("/", (req, res) => res.send("Hello World!"));' >> server.js
+    echo 'app.listen(port, () => console.log(`Listening on port ${port}!`));' >> server.js
+else
+    echo -e "${GREEN}server.js already exists and is not empty.${NC}"
+fi
 
     echo -e "${GREEN}Adding 'devStart' script to package.json...${NC}"
     if ! jq '.scripts.devStart = "nodemon server.js"' package.json > raw.json || ! mv raw.json package.json; then
@@ -63,4 +73,4 @@ for package in "$@"; do
     fi
 done
 
-echo -e "${GREEN}Done!${NC}"
+echo -e "${GREEN}##########DONE!##########${NC}"
